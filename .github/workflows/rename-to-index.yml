@@ -1,0 +1,17 @@
+name: Rename blog to index
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  rename:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rename blog-website.html to index.html
+        run: |
+          git mv blog-website.html index.html
+          git config user.name "abdullahvirkva"
+          git config user.email "abdullahvirkva@users.noreply.github.com"
+          git commit -m "Rename blog-website.html to index.html"
+          git push
